@@ -24,6 +24,7 @@ ADD model.safetensors /
 ADD model2.safetensors /
 ADD model_disney.safetensors /
 ADD model_rev.safetensors /
+ADD darkSushiMix.safetensors /
 
 # ---------------------------------------------------------------------------- #
 #                        Stage 3: Build the final image                        #
@@ -56,8 +57,9 @@ COPY --from=download /repositories/ ${ROOT}/repositories/
 COPY --from=download /model.safetensors /stable-diffusion-webui/models/Stable-diffusion/model.safetensors
 COPY --from=download /model2.safetensors /stable-diffusion-webui/models/Stable-diffusion/model2.safetensors
 COPY --from=download /model_disney.safetensors /stable-diffusion-webui/models/Stable-diffusion/model_disney.safetensors
-COPY --from=download /model_rev.safetensors /stable-diffusion-webui/models/Stable-diffusion/model_rev.safetensors
-RUN mkdir ${ROOT}/interrogate && cp ${ROOT}/repositories/clip-interrogator/data/* ${ROOT}/interrogate
+COPY --from=download /model_rev.safetensors /stable-diffusion-webui`/models/Stable-diffusion/model_rev.safetensors
+COPY --from=download /darkSushiMix.safetensors /stable-diffusion-webui`/models/Stable-diffusion/darkSushiMix.safetensors
+RUN mkdir ${ROOT}/interrogate && cp ${ROOT}/repositories/clip-inter`rogator/data/* ${ROOT}/interrogate
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r ${ROOT}/repositories/CodeFormer/requirements.txt
 
@@ -82,6 +84,7 @@ RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-d
 RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model2.safetensors && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model2.safetensors
 RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model_disney.safetensors && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model_disney.safetensors
 RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model_rev.safetensors && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model_rev.safetensors
+RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/darkSushiMix.safetensors && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model_rev.safetensors
 # Cleanup section (Worker Template)
 RUN apt-get autoremove -y && \
     apt-get clean -y && \
