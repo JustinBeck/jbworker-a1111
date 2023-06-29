@@ -59,7 +59,7 @@ COPY --from=download /model2.safetensors /stable-diffusion-webui/models/Stable-d
 COPY --from=download /model_disney.safetensors /stable-diffusion-webui/models/Stable-diffusion/model_disney.safetensors
 COPY --from=download /model_rev.safetensors /stable-diffusion-webui`/models/Stable-diffusion/model_rev.safetensors
 COPY --from=download /darkSushiMix.safetensors /stable-diffusion-webui`/models/Stable-diffusion/darkSushiMix.safetensors
-RUN mkdir ${ROOT}/interrogate && cp ${ROOT}/repositories/clip-inter`rogator/data/* ${ROOT}/interrogate
+RUN mkdir ${ROOT}/interrogate && cp ${ROOT}/repositories/clip-interrogator/data/* ${ROOT}/interrogate
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r ${ROOT}/repositories/CodeFormer/requirements.txt
 
