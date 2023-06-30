@@ -81,7 +81,7 @@ ADD src .
 
 COPY builder/cache.py /stable-diffusion-webui/cache.py
 RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/mdjrny-v4.ckpt && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/mdjrny-v4.ckpt
-RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/anything-v4.5-pruned.ckpt && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/anything-v4.5-pruned.ckpt
+#RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/anything-v4.5-pruned.ckpt && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/anything-v4.5-pruned.ckpt
 RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model_disney.safetensors && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model_disney.safetensors
 RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model_rev.safetensors && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/model_rev.safetensors
 RUN cd /stable-diffusion-webui && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/darkSushiMix.safetensors && python cache.py --use-cpu=all --ckpt /stable-diffusion-webui/models/Stable-diffusion/darkSushiMix.safetensors
